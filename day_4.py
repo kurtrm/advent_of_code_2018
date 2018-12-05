@@ -40,7 +40,9 @@ def get_activity():
     return guards
 
 
-if __name__ == '__main__':
+def sleepiest_guard_and_minute():
+    """
+    """
     guards_sleep = get_activity()
     best_min = 0
     top_guard = None
@@ -55,4 +57,32 @@ if __name__ == '__main__':
             highest_count = value
             highest_min = key
 
-    print(top_guard, highest_min)
+    return top_guard, highest_min
+
+
+def sleepiest_minute():
+    """
+    """
+    guards_sleep = get_activity()
+    best_counts = 0
+    best_min = 0
+    top_guard = None
+    for key, value in guards_sleep.items():
+        top_counts = 0
+        top_min = 0
+        for minute, count in value.items():
+            if count > top_counts:
+                top_counts = count
+                top_min = minute
+        if top_counts > best_counts:
+            top_guard = key
+            best_counts = top_counts
+            best_min = top_min
+
+    return top_guard, best_min
+
+
+if __name__ == '__main__':
+
+    print(sleepiest_guard_and_minute())
+    print(sleepiest_minute())
