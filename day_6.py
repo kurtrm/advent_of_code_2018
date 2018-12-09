@@ -64,8 +64,29 @@ def distances():
     border_nums = np.unique(np.concatenate([border_left, border_bottom, border_right, border_top]))
     grid[np.isin(grid, border_nums)] = 0
 
-    return np.max(np.unique(grid, return_counts=True)[1])
+    return np.max(np.unique(grid, return_counts=True)[1][1:])
+
+
+def safe_region():
+    """
+    construct area
+    for every point in the area, calculate distance between every input point and that point
+    which ever point has the smallest manhattan distance, set that coordinates value to the
+    integer value starting from 1
+    if equidistant, equal 0
+    """
+    coords_raw = read_input('input_6.txt')[:-1]
+    coords = [(int(coord.split(', ')[0]), int(coord.split(', ')[1])) for coord in coords_raw]
+    max_x, max_y = get_area()
+    # coords = [(1, 1), (1, 6), (8, 3), (3, 4), (5, 5), (8, 9)]
+    # max_x, max_y = 8, 9
+    grid = np.zeros((max_y+1, max_x+1))
+    all_poss_coords = ((x, y) for y in range(max_y+1) for x in range(max_x+1))
+    for coord in all_poss_coords:
+        dist = sum(cityblock(coord, point) for point in coords)
+        grid[coord[1], coord[0]] = dist
+    return len(grid[grid < 10000])
 
 
 if __name__ == '__main__':
-    print(distances())
+    print(safe_region())
