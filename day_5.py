@@ -17,8 +17,6 @@ def change_polymer(file):
     """
     i = 0
     while True:
-        # if i == 100:
-        #     import pdb; pdb.set_trace()
         try:
             capital = file[i].isupper()
             if capital:
