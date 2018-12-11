@@ -58,22 +58,19 @@ def construct_tree():
     return ''.join(topography)
 
 
-def do_work():
-    """
-    HPDTNXYLOCGEQSIMABZKRUWVFJ
-    """
-    time = {letter.upper(): i for letter, i in enumerate(ascii_lowercase, 1)}
-    tree = construct_tree()[::-1]
-    t = 0
-    workers = 2
-    start = [(tree.pop()), (tree.pop())]
-    while True:
-        t += 1
-
-    for letter in tree[::-1]:
+# def do_work():
+#     """
+#     [HPDT][NXYL][GEQS][IMAB][ZKRU][WVFJ]
+#     """
+#     time = {letter.upper(): i for letter, i in enumerate(ascii_lowercase, 1)}
+#     tree = construct_tree()[::-1]
+#     t = 0
+#     workers = 2
+#     start = [[tree.pop(), t], [tree.pop(), t]]
+#     while workers < 2:
 
 
-
+#     for letter in tree[::-1]:
 
 
 if __name__ == '__main__':
