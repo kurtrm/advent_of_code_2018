@@ -3,6 +3,7 @@ dicty = {
      'C': {
          'A': {'B': {E: {}, 'D': {'E': {}}}, 'F':{'E': {}}}}}
 """
+from string import ascii_lowercase
 from read_file import read_input
 import heapq
 
@@ -55,6 +56,24 @@ def construct_tree():
                 heapq.heappush(stack, (node, node))
                 in_degree[node] -= 1
     return ''.join(topography)
+
+
+def do_work():
+    """
+    HPDTNXYLOCGEQSIMABZKRUWVFJ
+    """
+    time = {letter.upper(): i for letter, i in enumerate(ascii_lowercase, 1)}
+    tree = construct_tree()[::-1]
+    t = 0
+    workers = 2
+    start = [(tree.pop()), (tree.pop())]
+    while True:
+        t += 1
+
+    for letter in tree[::-1]:
+
+
+
 
 
 if __name__ == '__main__':
